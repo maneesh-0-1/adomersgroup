@@ -74,7 +74,7 @@ export function SpaceStation() {
   });
 
   return (
-    <group ref={group}>
+    <group ref={group} rotation={[0, 0, Math.PI / 2]}>
       <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.5}>
         {/* Central Spine */}
         <mesh>
