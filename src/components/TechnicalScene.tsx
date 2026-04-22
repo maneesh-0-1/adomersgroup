@@ -37,7 +37,7 @@ function SolarArray({ position, rotation }: { position: [number, number, number]
 function HabitatRing({ radius, width, position }: { radius: number, width: number, position: [number, number, number] }) {
   const ringRef = useRef<THREE.Group>(null);
   
-  useFrame((state) => {
+  useFrame(() => {
     if (ringRef.current) {
       ringRef.current.rotation.y += 0.002;
     }
@@ -97,12 +97,12 @@ function Spine() {
           <sphereGeometry args={[0.8, 32, 32]} />
           <meshStandardMaterial color="#1e293b" metalness={1} roughness={0.2} />
         </mesh>
-        <mesh>
-          <torusGeometry args={[0.9, 0.02, 16, 100]} rotation={[Math.PI / 2, 0, 0]} />
+        <mesh rotation={[Math.PI / 2, 0, 0]}>
+          <torusGeometry args={[0.9, 0.02, 16, 100]} />
           <meshStandardMaterial color="#00f5ff" emissive="#00f5ff" emissiveIntensity={5} />
         </mesh>
-        <mesh>
-          <torusGeometry args={[0.9, 0.02, 16, 100]} rotation={[0, 0, 0]} />
+        <mesh rotation={[0, 0, 0]}>
+          <torusGeometry args={[0.9, 0.02, 16, 100]} />
           <meshStandardMaterial color="#00f5ff" emissive="#00f5ff" emissiveIntensity={5} />
         </mesh>
       </group>
