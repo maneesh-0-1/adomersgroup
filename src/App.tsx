@@ -76,38 +76,34 @@ function App() {
       <div className="noise-overlay" />
 
       {/* Navbar */}
-      <nav 
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 ${
-          isScrolled 
-            ? 'py-4 glass-morphism border-b border-white/10 !rounded-none shadow-2xl' 
-            : 'py-10 bg-transparent border-none'
-        }`}
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 ${isScrolled
+          ? 'py-4 glass-morphism border-b border-white/10 !rounded-none shadow-2xl'
+          : 'py-10 bg-transparent border-none'
+          }`}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <img 
-              src={logo} 
-              alt="Adomers Logo" 
-              className={`transition-all duration-500 object-contain ${
-                isScrolled ? 'h-10' : 'h-16'
-              }`} 
+            <img
+              src={logo}
+              alt="Adomers Logo"
+              className={`transition-all duration-500 object-contain ${isScrolled ? 'h-10' : 'h-16'
+                }`}
             />
           </div>
 
-          <div 
-            className={`hidden md:flex items-center gap-10 text-sm font-medium uppercase tracking-[0.2em] transition-all duration-500 ${
-              isScrolled ? 'opacity-100' : 'opacity-80 hover:opacity-100'
-            }`}
+          <div
+            className={`hidden md:flex items-center gap-10 text-sm font-medium uppercase tracking-[0.2em] transition-all duration-500 ${isScrolled ? 'opacity-100' : 'opacity-80 hover:opacity-100'
+              }`}
           >
             <a href="#services" className="hover:text-electric-cyan transition-colors">Services</a>
             <a href="#operations" className="hover:text-electric-cyan transition-colors">Operations</a>
-            <a 
-              href="#enquiry" 
-              className={`px-8 py-3 rounded-full border transition-all duration-500 font-bold ${
-                isScrolled 
-                  ? 'border-electric-cyan text-electric-cyan hover:bg-electric-cyan hover:text-black shadow-[0_0_20px_rgba(0,255,255,0.2)]' 
-                  : 'border-white/20 text-white hover:border-white/50 bg-white/5'
-              }`}
+            <a
+              href="#enquiry"
+              className={`px-8 py-3 rounded-full border transition-all duration-500 font-bold ${isScrolled
+                ? 'border-electric-cyan text-electric-cyan hover:bg-electric-cyan hover:text-black shadow-[0_0_20px_rgba(0,255,255,0.2)]'
+                : 'border-white/20 text-white hover:border-white/50 bg-white/5'
+                }`}
             >
               Initiate Program
             </a>
@@ -132,19 +128,19 @@ function App() {
               <X className="w-10 h-10" />
             </button>
           </div>
-          
+
           <div className="flex flex-col gap-10 text-3xl font-black tracking-tighter italic">
             <a href="#services" onClick={() => setIsMenuOpen(false)} className="hover:text-electric-cyan transition-colors">SERVICES</a>
             <a href="#operations" onClick={() => setIsMenuOpen(false)} className="hover:text-electric-cyan transition-colors">OPERATIONS</a>
-            <a 
-              href="#enquiry" 
-              onClick={() => setIsMenuOpen(false)} 
+            <a
+              href="#enquiry"
+              onClick={() => setIsMenuOpen(false)}
               className="mt-10 px-8 py-5 bg-electric-cyan text-black rounded-2xl text-center text-xl font-bold shadow-[0_0_30px_rgba(0,255,255,0.4)]"
             >
               INITIATE PROGRAM
             </a>
           </div>
-          
+
           <div className="mt-auto pt-10 border-t border-white/10">
             <div className="flex items-center gap-4">
               <img src={logo} alt="Logo" className="h-10 opacity-50" />
@@ -186,7 +182,7 @@ function App() {
           </motion.div>
         </div>
 
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-40">
+        <div className="absolute bottom-[-10px] left-1/2 -translate-x-1/2 animate-bounce opacity-40">
           <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center pt-2">
             <div className="w-1 h-2 bg-white rounded-full" />
           </div>
@@ -298,12 +294,12 @@ function App() {
           </div>
 
           <div className="md:w-1/2 glass-morphism p-12 cyber-form-container">
-            <form 
-              className="space-y-6" 
-              onSubmit={async (e) => { 
-                e.preventDefault(); 
+            <form
+              className="space-y-6"
+              onSubmit={async (e) => {
+                e.preventDefault();
                 setFormStatus('submitting');
-                
+
                 const formData = new FormData(e.currentTarget);
                 formData.append("access_key", "c778401e-d116-42ea-8f42-c8e88e20ec40");
                 formData.append("subject", "New Aerospace Program Requisition / Adomers");
@@ -355,12 +351,11 @@ function App() {
                 <textarea name="message" rows={4} className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 cyan-glow-focus transition-all" placeholder="Specify test protocols or material specifications..." required></textarea>
               </div>
 
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 disabled={formStatus === 'submitting'}
-                className={`w-full py-5 bg-electric-cyan text-black font-black rounded-2xl hover:scale-[1.02] active:scale-[0.98] transition-all cyan-glow uppercase tracking-widest flex items-center justify-center gap-3 ${
-                  formStatus === 'submitting' ? 'opacity-50 cursor-not-allowed' : ''
-                }`}
+                className={`w-full py-5 bg-electric-cyan text-black font-black rounded-2xl hover:scale-[1.02] active:scale-[0.98] transition-all cyan-glow uppercase tracking-widest flex items-center justify-center gap-3 ${formStatus === 'submitting' ? 'opacity-50 cursor-not-allowed' : ''
+                  }`}
               >
                 {formStatus === 'submitting' ? (
                   <>
@@ -373,7 +368,7 @@ function App() {
               </button>
 
               {formStatus === 'success' && (
-                <motion.p 
+                <motion.p
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="text-electric-cyan text-sm text-center font-bold"
