@@ -68,6 +68,58 @@ function HabitatRing({ radius, width, position }: { radius: number, width: numbe
   );
 }
 
+function Spine() {
+  return (
+    <group>
+      {/* Main Segments */}
+      <mesh position={[0, 0, 0]}>
+        <cylinderGeometry args={[0.3, 0.3, 8, 32]} />
+        <meshStandardMaterial color="#e5e7eb" metalness={1} roughness={0.1} />
+      </mesh>
+      
+      {/* Structural Collars */}
+      {[...Array(6)].map((_, i) => (
+        <group key={i} position={[0, (i - 2.5) * 1.5, 0]}>
+          <mesh rotation={[Math.PI / 2, 0, 0]}>
+            <torusGeometry args={[0.45, 0.05, 16, 32]} />
+            <meshStandardMaterial color="#94a3b8" metalness={1} />
+          </mesh>
+          <mesh>
+            <cylinderGeometry args={[0.5, 0.5, 0.2, 32]} />
+            <meshStandardMaterial color="#d1d5db" metalness={1} />
+          </mesh>
+        </group>
+      ))}
+
+      {/* Central Reactor Hub */}
+      <group position={[0, 0, 0]}>
+        <mesh>
+          <sphereGeometry args={[0.8, 32, 32]} />
+          <meshStandardMaterial color="#1e293b" metalness={1} roughness={0.2} />
+        </mesh>
+        <mesh>
+          <torusGeometry args={[0.9, 0.02, 16, 100]} rotation={[Math.PI / 2, 0, 0]} />
+          <meshStandardMaterial color="#00f5ff" emissive="#00f5ff" emissiveIntensity={5} />
+        </mesh>
+        <mesh>
+          <torusGeometry args={[0.9, 0.02, 16, 100]} rotation={[0, 0, 0]} />
+          <meshStandardMaterial color="#00f5ff" emissive="#00f5ff" emissiveIntensity={5} />
+        </mesh>
+      </group>
+
+      {/* End Caps */}
+      <mesh position={[0, 4, 0]}>
+        <sphereGeometry args={[0.4, 16, 16, 0, Math.PI * 2, 0, Math.PI / 2]} />
+        <meshStandardMaterial color="#d1d5db" metalness={1} />
+      </mesh>
+      <mesh position={[0, -4, 0]} rotation={[Math.PI, 0, 0]}>
+        <sphereGeometry args={[0.4, 16, 16, 0, Math.PI * 2, 0, Math.PI / 2]} />
+        <meshStandardMaterial color="#d1d5db" metalness={1} />
+      </mesh>
+    </group>
+  );
+}
+
 export function SpaceStation() {
   const group = useRef<THREE.Group>(null);
   const coreRef = useRef<THREE.Mesh>(null);
@@ -86,15 +138,11 @@ export function SpaceStation() {
   return (
     <group ref={group} rotation={[0, 0, Math.PI / 2]}>
       <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.5}>
-        {/* Central Spine - Polished Titanium */}
-        <mesh>
-          <cylinderGeometry args={[0.4, 0.5, 8, 32]} />
-          <meshStandardMaterial color="#e5e7eb" metalness={1} roughness={0.1} />
-        </mesh>
+        <Spine />
         
         {/* Pulsing Core Light Strips */}
         <mesh ref={coreRef}>
-          <cylinderGeometry args={[0.42, 0.52, 7.8, 32]} />
+          <cylinderGeometry args={[0.42, 0.42, 7.8, 32]} />
           <meshStandardMaterial color="#00f5ff" emissive="#00f5ff" emissiveIntensity={2} transparent opacity={0.3} wireframe />
         </mesh>
 
