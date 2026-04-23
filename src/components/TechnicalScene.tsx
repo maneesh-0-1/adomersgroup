@@ -18,7 +18,7 @@ function SolarArray({ position, rotation }: { position: [number, number, number]
       {/* Panels */}
       <mesh position={[2, 0, 0]}>
         <boxGeometry args={[3, 1.5, 0.05]} />
-        <meshStandardMaterial color="#001525" emissive="#004a8f" emissiveIntensity={0.5} metalness={0} roughness={1} />
+        <meshStandardMaterial color="#050505" emissive="#004a8f" emissiveIntensity={0.2} metalness={0} roughness={1} />
       </mesh>
       {/* Bright Edge */}
       <mesh position={[2, 0, 0]}>
@@ -42,7 +42,7 @@ function HabitatRing({ radius, width, position }: { radius: number, width: numbe
     <group ref={ringRef} position={position}>
       <mesh rotation={[Math.PI / 2, 0, 0]}>
         <torusGeometry args={[radius, width, 16, 100]} />
-        <meshStandardMaterial color="#d1d5db" metalness={0} roughness={1} />
+        <meshStandardMaterial color="#0a0a0a" metalness={0} roughness={1} />
       </mesh>
       {/* Pulsing neon inner ring */}
       <mesh rotation={[Math.PI / 2, 0, 0]}>
@@ -69,7 +69,7 @@ function Spine() {
       {/* Main Segments */}
       <mesh position={[0, 0, 0]}>
         <cylinderGeometry args={[0.3, 0.3, 8, 32]} />
-        <meshStandardMaterial color="#e5e7eb" metalness={0} roughness={1} />
+        <meshStandardMaterial color="#0a0a0a" metalness={0} roughness={1} />
       </mesh>
       
       {/* Structural Collars */}
@@ -77,11 +77,11 @@ function Spine() {
         <group key={i} position={[0, (i - 2.5) * 1.5, 0]}>
           <mesh rotation={[Math.PI / 2, 0, 0]}>
             <torusGeometry args={[0.45, 0.05, 16, 32]} />
-            <meshStandardMaterial color="#94a3b8" metalness={0} roughness={0.8} />
+            <meshStandardMaterial color="#0a0a0a" metalness={0} roughness={0.8} />
           </mesh>
           <mesh>
             <cylinderGeometry args={[0.5, 0.5, 0.2, 32]} />
-            <meshStandardMaterial color="#d1d5db" metalness={0} roughness={0.8} />
+            <meshStandardMaterial color="#0a0a0a" metalness={0} roughness={0.8} />
           </mesh>
         </group>
       ))}
@@ -90,7 +90,7 @@ function Spine() {
       <group position={[0, 0, 0]}>
         <mesh>
           <sphereGeometry args={[0.8, 32, 32]} />
-          <meshStandardMaterial color="#1e293b" metalness={0} roughness={1} />
+          <meshStandardMaterial color="#050505" metalness={0} roughness={1} />
         </mesh>
         <mesh rotation={[Math.PI / 2, 0, 0]}>
           <torusGeometry args={[0.9, 0.02, 16, 100]} />
@@ -105,11 +105,11 @@ function Spine() {
       {/* End Caps */}
       <mesh position={[0, 4, 0]}>
         <sphereGeometry args={[0.4, 16, 16, 0, Math.PI * 2, 0, Math.PI / 2]} />
-        <meshStandardMaterial color="#d1d5db" metalness={0} roughness={1} />
+        <meshStandardMaterial color="#0a0a0a" metalness={0} roughness={1} />
       </mesh>
       <mesh position={[0, -4, 0]} rotation={[Math.PI, 0, 0]}>
         <sphereGeometry args={[0.4, 16, 16, 0, Math.PI * 2, 0, Math.PI / 2]} />
-        <meshStandardMaterial color="#d1d5db" metalness={0} roughness={1} />
+        <meshStandardMaterial color="#0a0a0a" metalness={0} roughness={1} />
       </mesh>
     </group>
   );
@@ -144,11 +144,11 @@ export function SpaceStation() {
         {/* Docking Modules */}
         <mesh position={[0, 2.5, 0]}>
           <cylinderGeometry args={[0.8, 0.8, 1.5, 16]} />
-          <meshStandardMaterial color="#94a3b8" metalness={0} roughness={1} />
+          <meshStandardMaterial color="#0a0a0a" metalness={0} roughness={1} />
         </mesh>
         <mesh position={[0, -2.5, 0]}>
           <cylinderGeometry args={[0.8, 0.8, 1.5, 16]} />
-          <meshStandardMaterial color="#94a3b8" metalness={0} roughness={1} />
+          <meshStandardMaterial color="#0a0a0a" metalness={0} roughness={1} />
         </mesh>
 
         {/* Habitat Rings */}
@@ -166,7 +166,7 @@ export function SpaceStation() {
         <group position={[0, 4, 0]}>
           <mesh rotation={[0, 0, 0.5]}>
             <coneGeometry args={[0.5, 0.3, 16]} />
-            <meshStandardMaterial color="#f8fafc" metalness={0} roughness={1} />
+            <meshStandardMaterial color="#0a0a0a" metalness={0} roughness={1} />
           </mesh>
           <mesh position={[0, 0.3, 0]}>
             <cylinderGeometry args={[0.02, 0.02, 0.8]} />
@@ -185,7 +185,7 @@ export function SpaceStation() {
             ]}
             rotation={[Math.random() * Math.PI, Math.random() * Math.PI, 0]}
             scale={[Math.random() * 0.25, Math.random() * 0.25, Math.random() * 0.25]}
-            color={Math.random() > 0.8 ? "#00f5ff" : (Math.random() > 0.5 ? "#1e293b" : "#475569")}
+            color={Math.random() > 0.8 ? "#00f5ff" : (Math.random() > 0.5 ? "#050505" : "#0a0a0a")}
           />
         ))}
       </Float>
