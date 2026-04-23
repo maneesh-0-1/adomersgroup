@@ -397,7 +397,6 @@ function App() {
           </div>
           <div className="flex gap-8 text-xs uppercase tracking-[0.2em] font-medium text-titanium-silver opacity-60">
             <span>Hyderabad, TS</span>
-            <span>Compliance: ISO/AS9100 Ready</span>
           </div>
         </div>
       </footer>
