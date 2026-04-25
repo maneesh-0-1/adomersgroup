@@ -10,12 +10,14 @@ import {
   ChevronRight,
   ArrowRight,
   Mail,
-  Building2
+  Building2,
+  CheckCircle2
 } from 'lucide-react';
 import { TechnicalScene } from './components/TechnicalScene';
 import { BackgroundFluid } from './components/BackgroundFluid';
 import { SmoothScroll } from './components/SmoothScroll';
 import logo from './assets/Logo.svg';
+import aboutImg from './assets/about-us.png';
 
 const services = [
   {
@@ -96,6 +98,7 @@ function App() {
             className={`hidden md:flex items-center gap-10 text-sm font-medium uppercase tracking-[0.2em] transition-all duration-500 ${isScrolled ? 'opacity-100' : 'opacity-80 hover:opacity-100'
               }`}
           >
+            <a href="#about" className="hover:text-electric-cyan transition-colors">About</a>
             <a href="#services" className="hover:text-electric-cyan transition-colors">Services</a>
             <a href="#operations" className="hover:text-electric-cyan transition-colors">Operations</a>
             <a
@@ -130,6 +133,7 @@ function App() {
           </div>
 
           <div className="flex flex-col gap-10 text-3xl font-black tracking-tighter italic">
+            <a href="#about" onClick={() => setIsMenuOpen(false)} className="hover:text-electric-cyan transition-colors">ABOUT</a>
             <a href="#services" onClick={() => setIsMenuOpen(false)} className="hover:text-electric-cyan transition-colors">SERVICES</a>
             <a href="#operations" onClick={() => setIsMenuOpen(false)} className="hover:text-electric-cyan transition-colors">OPERATIONS</a>
             <a
@@ -189,8 +193,121 @@ function App() {
         </div>
       </section>
 
+      {/* About Us Section */}
+      <section id="about" className="py-20 px-6 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center gap-16">
+            {/* Left Side: Photo */}
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="md:w-1/2 relative group"
+            >
+              <div className="absolute -inset-4 bg-electric-cyan/20 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="relative rounded-[2.5rem] overflow-hidden border border-white/10 glass-morphism !p-0">
+                <img 
+                  src={aboutImg} 
+                  alt="Aerospace Precision Engineering" 
+                  className="w-full h-full object-cover aspect-[4/5] md:aspect-square group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-space-charcoal/80 to-transparent" />
+              </div>
+              
+              {/* Floating Stat/Badge */}
+              <motion.div 
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -bottom-8 -right-8 p-6 glass-morphism !rounded-3xl border border-electric-cyan/30 hidden lg:block"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-electric-cyan/20 flex items-center justify-center">
+                    <Zap className="text-electric-cyan w-6 h-6" />
+                  </div>
+                  <div>
+                    <p className="text-2xl font-black text-white">100%</p>
+                    <p className="text-[10px] uppercase tracking-widest text-titanium-silver">Material Integrity</p>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+
+            {/* Right Side: Content */}
+            <div className="md:w-1/2">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
+                <h2 className="text-electric-cyan font-bold tracking-[0.3em] uppercase mb-4 text-sm">
+                  Our Evolution
+                </h2>
+                <h3 className="text-4xl md:text-6xl font-black mb-8 leading-tight tracking-tighter">
+                  PRECISION <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric-cyan to-blue-500">REIMAGINED</span>
+                </h3>
+                
+                <div className="space-y-6 text-lg text-titanium-silver font-medium leading-relaxed mb-10">
+                  <p>
+                    At Adomers Aerospace, we've evolved beyond traditional consultancy. Recognizing the critical bottlenecks in the aerospace industry, we have <span className="text-white italic">rotated to a specialized supply and material acquisition model.</span>
+                  </p>
+                  <p>
+                    We don't just advise; we source, validate, and deliver mission-critical components that power next-generation aerospace programs. Our clinical precision ensures that every material we acquire meets the most rigorous safety and quality standards.
+                  </p>
+                </div>
+
+                {/* Compliance Badges */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+                  {[
+                    "DPIIT Certified",
+                    "MSME Registered",
+                    "GST Compliant"
+                  ].map((badge, i) => (
+                    <div key={i} className="flex items-center gap-3 px-4 py-3 glass-morphism !rounded-xl border border-white/5 group hover:border-electric-cyan/30 transition-colors">
+                      <CheckCircle2 className="w-5 h-5 text-electric-cyan" />
+                      <span className="text-xs font-bold tracking-widest uppercase text-white/80 group-hover:text-white transition-colors">{badge}</span>
+                    </div>
+                  ))}
+                </div>
+
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Strategic Pivot Section */}
+      <section className="py-20 px-6 relative">
+        <div className="max-w-5xl mx-auto glass-morphism p-12 md:p-24 text-center relative overflow-hidden group">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-electric-cyan to-transparent" />
+          
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+          >
+            <Zap className="w-12 h-12 text-electric-cyan mx-auto mb-8 animate-pulse" />
+            <h4 className="text-electric-cyan font-bold tracking-[0.4em] uppercase mb-12 text-xs">The Adomers Pivot</h4>
+            <blockquote className="text-3xl md:text-5xl font-black italic leading-tight tracking-tighter mb-12">
+              "We have strategically rotated to a <span className="text-electric-cyan">supply and material acquisition model</span> to solve the most critical bottlenecks in aerospace manufacturing."
+            </blockquote>
+            <div className="flex items-center justify-center gap-4">
+              <div className="h-px w-12 bg-white/20" />
+              <p className="text-sm font-bold uppercase tracking-widest text-titanium-silver">Direct Material Acquisition Strategy</p>
+              <div className="h-px w-12 bg-white/20" />
+            </div>
+          </motion.div>
+          
+          <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-electric-cyan/5 rounded-full blur-3xl group-hover:bg-electric-cyan/10 transition-colors duration-1000" />
+          <div className="absolute -top-24 -left-24 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl group-hover:bg-blue-500/10 transition-colors duration-1000" />
+        </div>
+      </section>
+
       {/* Services Bento Grid */}
-      <section id="services" className="py-24 px-6 relative">
+      <section id="services" className="py-20 px-6 relative">
         <div className="max-w-7xl mx-auto">
           <div className="mb-20 text-center">
             <h2 className="text-electric-cyan font-bold tracking-widest uppercase mb-4">Core Capabilities</h2>
@@ -230,7 +347,7 @@ function App() {
       </section>
 
       {/* Operations Timeline */}
-      <section id="operations" className="py-24 px-6 relative px-6">
+      <section id="operations" className="py-20 px-6 relative px-6">
         <div className="max-w-7xl mx-auto glass-morphism p-12 md:p-20 relative overflow-hidden">
           <div className="flex flex-col md:flex-row gap-12 items-center relative z-10">
             <div className="md:w-1/3">
@@ -266,7 +383,7 @@ function App() {
       </section>
 
       {/* Enquiry Form section */}
-      <section id="enquiry" className="py-24 px-6 relative">
+      <section id="enquiry" className="py-20 px-6 relative">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-20">
           <div className="md:w-1/2">
             <h2 className="text-electric-cyan font-bold tracking-widest uppercase mb-4">Program Initiation</h2>
