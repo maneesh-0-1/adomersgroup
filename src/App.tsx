@@ -11,7 +11,12 @@ import {
   ArrowRight,
   Mail,
   Building2,
-  CheckCircle2
+  CheckCircle2,
+  Cpu,
+  FileText,
+  Layers,
+  Award,
+  Boxes
 } from 'lucide-react';
 import { TechnicalScene } from './components/TechnicalScene';
 import { BackgroundFluid } from './components/BackgroundFluid';
@@ -51,6 +56,27 @@ const timelineSteps = [
   { title: "Testing Lifecycle", description: "Coordinating vibration, heat, and pressure resistance validations." },
   { title: "Audit Verification", description: "Gathering technical datasheets and validation certificates." },
   { title: "Documentation Collation", description: "Final traceability packaging and audit-ready delivery." }
+];
+
+const materialGrades = [
+  { 
+    grade: "7075-T6", 
+    type: "Aluminium", 
+    properties: "High Strength · Zinc-Alloy",
+    useCase: "Structural Components"
+  },
+  { 
+    grade: "2024-T3", 
+    type: "Aluminium", 
+    properties: "Fatigue Resistance · Copper-Alloy",
+    useCase: "Fuselage & Wing Skins"
+  },
+  { 
+    grade: "Ti-6Al-4V", 
+    type: "Titanium", 
+    properties: "Grade 5 · Heat Treatable",
+    useCase: "Engine Parts & Fasteners"
+  }
 ];
 
 function App() {
@@ -99,6 +125,7 @@ function App() {
               }`}
           >
             <a href="#about" className="hover:text-electric-cyan transition-colors">About</a>
+            <a href="#materials" className="hover:text-electric-cyan transition-colors">Materials</a>
             <a href="#services" className="hover:text-electric-cyan transition-colors">Services</a>
             <a href="#operations" className="hover:text-electric-cyan transition-colors">Operations</a>
             <a
@@ -134,6 +161,7 @@ function App() {
 
           <div className="flex flex-col gap-10 text-3xl font-black tracking-tighter italic">
             <a href="#about" onClick={() => setIsMenuOpen(false)} className="hover:text-electric-cyan transition-colors">ABOUT</a>
+            <a href="#materials" onClick={() => setIsMenuOpen(false)} className="hover:text-electric-cyan transition-colors">MATERIALS</a>
             <a href="#services" onClick={() => setIsMenuOpen(false)} className="hover:text-electric-cyan transition-colors">SERVICES</a>
             <a href="#operations" onClick={() => setIsMenuOpen(false)} className="hover:text-electric-cyan transition-colors">OPERATIONS</a>
             <a
@@ -303,6 +331,97 @@ function App() {
           
           <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-electric-cyan/5 rounded-full blur-3xl group-hover:bg-electric-cyan/10 transition-colors duration-1000" />
           <div className="absolute -top-24 -left-24 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl group-hover:bg-blue-500/10 transition-colors duration-1000" />
+        </div>
+      </section>
+
+      {/* Material Supply Section */}
+      <section id="materials" className="py-20 px-6 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col lg:flex-row gap-16 mb-20 items-end">
+            <div className="lg:w-2/3">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
+                <h2 className="text-electric-cyan font-bold tracking-[0.3em] uppercase mb-4 text-sm">
+                  Certified Supply Chain
+                </h2>
+                <h3 className="text-4xl md:text-6xl font-black mb-8 leading-tight tracking-tighter">
+                  AEROSPACE-GRADE <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric-cyan to-blue-500">ALUMINIUM & TITANIUM</span>
+                </h3>
+                <p className="text-xl text-titanium-silver font-medium leading-relaxed max-w-3xl">
+                  We supply certified aerospace-grade aluminium and titanium to Tier 2 and Tier 3 manufacturers across Hyderabad. Every material we deliver comes with <span className="text-white">full mill traceability, NABL-certified test reports,</span> and documentation ready at the point of delivery — no follow-ups, no delays.
+                </p>
+              </motion.div>
+            </div>
+            <div className="lg:w-1/3">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="p-8 glass-morphism !rounded-3xl border-l-4 !border-l-electric-cyan relative group"
+              >
+                <Award className="w-10 h-10 text-electric-cyan mb-4 group-hover:rotate-12 transition-transform" />
+                <p className="text-white font-bold leading-snug mb-2">Built for Standards</p>
+                <p className="text-sm text-titanium-silver">
+                  For manufacturers where material quality and compliance are non-negotiable, we are the supply partner built around that standard.
+                </p>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Material Grade Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+            {materialGrades.map((m, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="glass-morphism p-10 group hover:border-electric-cyan/50 transition-all relative overflow-hidden"
+              >
+                <div className="absolute -right-8 -top-8 w-32 h-32 bg-white/5 rounded-full group-hover:bg-electric-cyan/10 transition-colors" />
+                <Layers className="w-8 h-8 text-electric-cyan mb-6" />
+                <div className="mb-8">
+                  <p className="text-xs font-bold tracking-widest text-electric-cyan uppercase mb-2">{m.type}</p>
+                  <h4 className="text-4xl font-black italic tracking-tighter mb-4 group-hover:text-electric-cyan transition-colors">{m.grade}</h4>
+                  <p className="text-sm text-titanium-silver font-medium border-l-2 border-white/10 pl-4 py-1">{m.properties}</p>
+                </div>
+                <div className="pt-6 border-t border-white/5">
+                  <p className="text-[10px] uppercase tracking-widest text-white/40 mb-2">Primary Application</p>
+                  <p className="text-sm font-bold text-white/80">{m.useCase}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Exclusive focus block */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="glass-morphism !bg-white/[0.02] p-10 md:p-16 border border-white/10 relative overflow-hidden"
+          >
+            <div className="flex flex-col md:flex-row items-center gap-12 relative z-10">
+              <div className="md:w-1/4">
+                <div className="w-24 h-24 rounded-full bg-electric-cyan/20 flex items-center justify-center">
+                  <Boxes className="w-12 h-12 text-electric-cyan" />
+                </div>
+              </div>
+              <div className="md:w-3/4">
+                <h4 className="text-2xl font-bold mb-4 italic">Exclusive Ecosystem Alignment</h4>
+                <p className="text-lg text-titanium-silver leading-relaxed">
+                  We work exclusively with manufacturers who supply to <span className="text-white">aerospace OEMs, defence contractors, and precision engineering units.</span> Our focus is on the grades that matter most on the shop floor — sourced, pre-tested, and ready to use.
+                </p>
+              </div>
+            </div>
+            <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-electric-cyan/5 to-transparent pointer-events-none" />
+          </motion.div>
         </div>
       </section>
 
