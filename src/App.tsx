@@ -12,8 +12,6 @@ import {
   Mail,
   Building2,
   CheckCircle2,
-  Cpu,
-  FileText,
   Layers,
   Award,
   Boxes
